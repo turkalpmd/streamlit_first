@@ -48,7 +48,8 @@ if st.button("Z skorunu Analiz Et"):
     df["wfa"] = wfa
     df["lhfa"] = lhfa
     
-    st.success(f"Yaşa göre ağırlık; {wfa} \nYaşa göre boy; {lhfa}'dur ") #st.success(f"Sonuç: {result}")
+    st.success(f"Yaşa göre ağırlık; {wfa}") 
+    st.success(f"Yaşa göre boy; {lhfa}") #st.success(f"Sonuç: {result}")
     
     #result = [weight,height,age,gender,wfa,lhfa]
     #save_results(result)
