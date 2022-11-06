@@ -58,13 +58,15 @@ if st.button("Dosyayı Yükle ve Analiz Et"):
                 df["wfa"] = wfa
                 df["lhfa"] = lhfa
                 save_to_log('INFO', 'Dosya işleme işlemi başarılı.')
-                st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}")#st.success(f"Sonuç: {result}")
+                st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}") #st.success(f"Sonuç: {result}")
 
                 try:
-                    save_results(df.values)
+                    result = weight,height,age,gender,wfa,lhfa]
+                    save_results(result)
                     save_to_log('INFO', 'Sonuç dosyası oluşturuldu.')
                     save_files()
                     save_to_log('INFO', 'Dosyalar Google Drive\'a yüklendi.')
+
                 except Exception as e:
                     save_to_log('ERROR', 'Sonuç dosyası oluşturulamadı.')
                     save_to_log('ERROR', e)
