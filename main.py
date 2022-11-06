@@ -26,9 +26,9 @@ age = st.number_input("Ay olarak yaşı;",step=1)
 gender =st.text_input("Erkek için E Kız için K yazınız;")
 
 if gender == "E":
-    gender == "M"
+    gender = "M"
 if gender == "K":
-    gender == "F"
+    gender = "F"
 
 df = pd.DataFrame()
 df["weight"] = weight
