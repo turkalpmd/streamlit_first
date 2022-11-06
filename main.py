@@ -1,11 +1,48 @@
 
-
+from PIL import Image
 import streamlit as st
 from utils import *
+import pandas as pd
+import numpy as np
 
 
-st.title("CSV İşleme Uygulaması")
-uploaded_files = st.file_uploader("CSV Dosyasını Seçiniz", type="csv")
+st.title("This is My Z-score Calculator")
+
+img = Image.open("zscore.png")
+st.image(img)
+
+# Introduction
+
+st.subheader("Introduction")
+
+st.text("""
+Burada Z-score'ları hesaplıyacağız inş.
+	""")
+
+
+# Input
+
+weight = st.number_input("Enter your Weight in KG", step = 0.1)
+
+height = st.number_input("Enter your Height in Centimeters")
+
+age = st.number_input("Enter your Age with month format",step=1)
+
+gender  =st.text_input("Enter your gender with F or M")
+
+
+df = pd.DataFrame()
+df["weight"] = weight
+df["height"] = height
+df["age"] = age
+df["gender"] = gender
+
+wfa, lhfa = calc(weight,height,age,gender)
+
+st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}")
+
+uploaded_files = df#st.file_uploader("CSV Dosyasını Seçiniz", type="csv")
+
 if st.button("Dosyayı Yükle ve Analiz Et"):
     create_user_log_file()
     if uploaded_files:
