@@ -23,7 +23,12 @@ Burada Z-score'ları hesaplıyacağız inş.
 weight = st.number_input("KG cinsinden ağırlık;", step = 0.1)
 height = st.number_input("Santimetre cinsinden boyu;")
 age = st.number_input("Ay olarak yaşı;",step=1)
-gender =st.text_input("Erkek için M Kız için F yazınız;")
+gender =st.text_input("Erkek için E Kız için K yazınız;")
+
+if gender == "E":
+    gender == "M"
+if gender == "K":
+    gender == "F"
 
 df = pd.DataFrame()
 df["weight"] = weight
