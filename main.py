@@ -37,12 +37,11 @@ df["height"] = height
 df["age"] = age
 df["gender"] = gender
 
-wfa, lhfa = calc(weight,height,age,gender)
+#wfa, lhfa = calc(weight,height,age,gender)
 
-st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}")
+#st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}")
 
-df["wfa"] = wfa
-df["lhfa"] = lhfa
+
 
 uploaded_files = df#st.file_uploader("CSV Dosyasını Seçiniz", type="csv")
 
@@ -55,12 +54,14 @@ if st.button("Dosyayı Yükle ve Analiz Et"):
             save_to_log('INFO', 'Dosya yükleme işlemi başarılı.')
 
             try:
-                result = process_csv(dataframe)
+                wfa, lhfa = calc(weight,height,age,gender)#result = process_csv(dataframe)
+                df["wfa"] = wfa
+                df["lhfa"] = lhfa
                 save_to_log('INFO', 'Dosya işleme işlemi başarılı.')
-                st.success(f"Sonuç: {result}")
+                st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}")#st.success(f"Sonuç: {result}")
 
                 try:
-                    save_results(result)
+                    save_results(df.values)
                     save_to_log('INFO', 'Sonuç dosyası oluşturuldu.')
                     save_files()
                     save_to_log('INFO', 'Dosyalar Google Drive\'a yüklendi.')
