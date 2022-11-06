@@ -9,7 +9,7 @@ from decimal import Decimal as D
 
 import six
 
-from . import exceptions
+#from . import exceptions
 
 
 # TODO is this the best way to get this file's directory?
