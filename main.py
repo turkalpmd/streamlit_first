@@ -6,9 +6,9 @@ import pandas as pd
 import numpy as np
 
 
-st.title("This is My Z-score Calculator")
+st.title("Z-score Hesaplama Uygulaması")
 
-img = Image.open("zscore.png")
+img = Image.open("hacettepe.jpg")
 st.image(img)
 
 # Introduction
