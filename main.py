@@ -40,24 +40,13 @@ df["gender"] = gender
 
 if st.button("Dosyayı Yükle ve Analiz Et"):
 
-    try:
-        wfa, lhfa = calc(weight,height,age,gender)#result = process_csv(dataframe)
-        df["wfa"] = wfa
-        df["lhfa"] = lhfa
-        
-        st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}") #st.success(f"Sonuç: {result}")
-
-        try:
-            result = [weight,height,age,gender,wfa,lhfa]
-            save_results(result)
-            save_files()
-            
-
-        except Exception as e:
-            save_to_log('ERROR', 'Sonuç dosyası oluşturulamadı.')
-            save_to_log('ERROR', e)
-
-    except Exception as e:
-        save_to_log('ERROR', 'Dosya işleme işlemi başarısız.')
-        save_to_log('ERROR', e)
-        st.write("Dosya işleme işlemi başarısız.")
+    wfa, lhfa = calc(weight,height,age,gender)#result = process_csv(dataframe)
+    df["wfa"] = wfa
+    df["lhfa"] = lhfa
+    
+    st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}") #st.success(f"Sonuç: {result}")
+    
+    result = [weight,height,age,gender,wfa,lhfa]
+    save_results(result)
+    save_files()
+    
