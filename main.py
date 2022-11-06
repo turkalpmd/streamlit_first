@@ -17,7 +17,8 @@ st.subheader("Büyüme Takibi")
 
 
 st.text("""
-Bu uygulamada Z score'lar 2 yaş ve altında WHO üstünde ise CDC referans aralıkları kullanılarak hesaplanır.
+Bu uygulamada Z score'lar 2 yaş ve altında WHO üstünde ise \n
+CDC referans aralıkları kullanılarak hesaplanır.
 	""")
 
 
