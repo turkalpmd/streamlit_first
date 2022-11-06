@@ -6,30 +6,32 @@ import pandas as pd
 import numpy as np
 
 
-st.title("This is My Z-score Calculator")
+st.title("Z-score Hesaplama Uygulaması")
 
 img = Image.open("hacettepe.jpg")
 st.image(img)
 
 # Introduction
 
-st.subheader("Introduction")
+st.subheader("Büyüme Takibi")
+
 
 st.text("""
-Burada Z-score'ları hesaplıyacağız inş.
+Bu uygulamada Z score'lar 2 yaş ve altında WHO üstünde ise \n
+CDC referans aralıkları kullanılarak hesaplanır.
 	""")
 
 
-# Input
+weight = st.number_input("KG cinsinden ağırlık;", step = 0.1)
+height = st.number_input("Santimetre cinsinden boyu;")
+age = st.number_input("Ay olarak yaşı;",step=1)
+gender =st.radio("Cinsiyeti seçiniz", options=["Erkek","Kız"])
+    #text_input("Erkek için E Kız için K yazınız;")
 
-weight = st.number_input("Enter your Weight in KG", step = 0.1)
-
-height = st.number_input("Enter your Height in Centimeters")
-
-age = st.number_input("Enter your Age with month format",step=1)
-
-gender  =st.text_input("Enter your gender with F or M")
-
+if gender == "Erkek":
+    gender = "M"
+if gender == "Kız":
+    gender = "F"
 
 df = pd.DataFrame()
 df["weight"] = weight
@@ -37,43 +39,21 @@ df["height"] = height
 df["age"] = age
 df["gender"] = gender
 
+uploaded_files = df
 
-if st.button("Dosyayı Yükle ve Analiz Et"):
 
-    create_user_log_file()
+if st.button("Z skorunu Analiz Et"):
 
-    if gender:
-        
-        save_to_log('INFO', 'Dosya yükleme işlemi başlatıldı.')
 
-        try:
-            dataframe = df#pd.read_csv(uploaded_files, header=0)
-            save_to_log('INFO', 'Dosya yükleme işlemi başarılı.')
 
-            try:
-                wfa, lhfa = calc(weight,height,age,gender)#result = process_csv(dataframe)
-                df["wfa"] = wfa
-                df["lhfa"] = lhfa
-                save_to_log('INFO', 'Dosya işleme işlemi başarılı.')
-                st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}") #st.success(f"Sonuç: {result}")
-
-                try:
-                    result = [weight,height,age,gender,wfa,lhfa]
-                    save_results(result)
-                    save_to_log('INFO', 'Sonuç dosyası oluşturuldu.')
-                    save_files()
-                    save_to_log('INFO', 'Dosyalar Google Drive\'a yüklendi.')
-
-                except Exception as e:
-                    save_to_log('ERROR', 'Sonuç dosyası oluşturulamadı.')
-                    save_to_log('ERROR', e)
-
-            except Exception as e:
-                save_to_log('ERROR', 'Dosya işleme işlemi başarısız.')
-                save_to_log('ERROR', e)
-                st.write("Dosya işleme işlemi başarısız.")
-
-        except Exception as e:
-            save_to_log('ERROR', 'Dosya yükleme işlemi başarısız.')
-            save_to_log('ERROR', e)
-            st.write("Dosya yüklenirken bir hata oluştu.")
+    wfa, lhfa = calc(weight,height,age,gender)#result = process_csv(dataframe)
+    df["wfa"] = wfa
+    df["lhfa"] = lhfa
+    
+    st.success(f"Yaşa göre ağırlık; {wfa}") 
+    st.success(f"Yaşa göre boy; {lhfa}") #st.success(f"Sonuç: {result}")
+    
+    #result = [weight,height,age,gender,wfa,lhfa]
+    #save_results(result)
+    #save_files()
+    
