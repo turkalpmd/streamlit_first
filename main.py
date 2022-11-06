@@ -50,7 +50,7 @@ if st.button("Dosyayı Yükle ve Analiz Et"):
     if uploaded_files:
         save_to_log('INFO', 'Dosya yükleme işlemi başlatıldı.')
         try:
-            dataframe = pd.read_csv(uploaded_files, header=0)
+            dataframe = df#pd.read_csv(uploaded_files, header=0)
             save_to_log('INFO', 'Dosya yükleme işlemi başarılı.')
 
             try:
