@@ -41,6 +41,9 @@ wfa, lhfa = calc(weight,height,age,gender)
 
 st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}")
 
+df["wfa"] = wfa
+df["lhfa"] = lhfa
+
 uploaded_files = df#st.file_uploader("CSV Dosyasını Seçiniz", type="csv")
 
 if st.button("Dosyayı Yükle ve Analiz Et"):
