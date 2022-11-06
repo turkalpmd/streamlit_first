@@ -25,11 +25,12 @@ CDC referans aralıkları kullanılarak hesaplanır.
 weight = st.number_input("KG cinsinden ağırlık;", step = 0.1)
 height = st.number_input("Santimetre cinsinden boyu;")
 age = st.number_input("Ay olarak yaşı;",step=1)
-gender =st.text_input("Erkek için E Kız için K yazınız;")
+gender =st.radio("Cinsiyeti seçiniz", options=["Erkek","Kız"])
+    #text_input("Erkek için E Kız için K yazınız;")
 
-if gender == "E":
+if gender == "Erkek":
     gender = "M"
-if gender == "K":
+if gender == "Kız":
     gender = "F"
 
 df = pd.DataFrame()
