@@ -20,25 +20,14 @@ Burada Z-score'ları hesaplıyacağız inş.
 	""")
 
 
-# Input
-
-weight = st.number_input("Enter your Weight in KG", step = 0.1)
-
-height = st.number_input("Enter your Height in Centimeters")
-
-age = st.number_input("Enter your Age with month format",step=1)
-
-gender  =st.text_input("Enter your gender with F or M")
+weight = st.number_input("KG cinsinden ağırlık;", step = 0.1)
+height = st.number_input("Santimetre cinsinden boyu;")
+age = st.number_input("Ay olarak yaşı;",step=1)
+gender =st.text_input("Erkek için M Kız için F yazınız;")
 
 
-df = pd.DataFrame()
-df["weight"] = weight
-df["height"] = height
-df["age"] = age
-df["gender"] = gender
+if st.button("Z skorunu Analiz Et"):
 
-
-if st.button("Dosyayı Yükle ve Analiz Et"):
 
     wfa, lhfa = calc(weight,height,age,gender)#result = process_csv(dataframe)
     df["wfa"] = wfa
