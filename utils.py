@@ -5,7 +5,7 @@ from pydrive.drive import GoogleDrive
 from datetime import datetime
 import pandas as pd
 import streamlit as st
-
+!pip install pygrowup
 from pygrowup import Calculator
 from pygrowup import helpers
 
