@@ -25,8 +25,15 @@ height = st.number_input("Santimetre cinsinden boyu;")
 age = st.number_input("Ay olarak yaşı;",step=1)
 gender =st.text_input("Erkek için M Kız için F yazınız;")
 
+df = pd.DataFrame()
+df["weight"] = weight
+df["height"] = height
+df["age"] = age
+df["gender"] = gender
 
+uploaded_files = df
 if st.button("Z skorunu Analiz Et"):
+
 
 
     wfa, lhfa = calc(weight,height,age,gender)#result = process_csv(dataframe)
