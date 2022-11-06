@@ -61,7 +61,7 @@ if st.button("Dosyayı Yükle ve Analiz Et"):
                 st.success(f"Your wfa is {wfa} anf lhfa is {lhfa}") #st.success(f"Sonuç: {result}")
 
                 try:
-                    result = weight,height,age,gender,wfa,lhfa]
+                    result = [weight,height,age,gender,wfa,lhfa]
                     save_results(result)
                     save_to_log('INFO', 'Sonuç dosyası oluşturuldu.')
                     save_files()
