@@ -13,6 +13,7 @@ from pygrowup import Calculator
 
 # Kullanıcıları, girdikleri tarih ile adlandıracağız.
 current_user = datetime.now().strftime('%H.%M.%S.%f %d-%m-%Y')
+
 created_files = []
 
 
@@ -20,9 +21,11 @@ created_files = []
 def create_user_log_file():
     # Kullanıcı için log dosyası oluşturma,
     with open(f"log_{current_user}.txt", "w", encoding="utf-8") as f:
+
         created_files.append(f"log_{current_user}.txt")
         # İlk mesaj
         log_message = str(current_user + " için log dosyasının başlangıcı.\n\n")
+        
         f.write(log_message)
         f.close()
 
@@ -56,6 +59,7 @@ def create_drive_auth():
     # Kimlik doğrulaması sonucunda elde edilen bilgiler mycreds.txt dosyasına kaydedilir.
     gauth.SaveCredentialsFile('mycreds.txt')
 
+
 def calc(weight,height,age,gender):
 
     if age <= 24:
@@ -80,6 +84,7 @@ def calc(weight,height,age,gender):
 
     return wfa,lhfa
 
+
 def process_csv(dataframe):
     dataframe.to_csv(f"csv_{current_user}.csv", index=False)
     created_files.append(f"csv_{current_user}.csv")
@@ -97,10 +102,8 @@ def save_files():
     gauth = GoogleAuth()
     create_cred_file()
     gauth.LoadCredentialsFile('mycreds_test.txt')
-
     drive = GoogleDrive(gauth)
     folder_name = 'test'  # Please set the folder name.
-
     folders = drive.ListFile(
         {
             'q': "title='" + folder_name + "' and mimeType='application/vnd.google-apps.folder' and trashed=false"}).GetList()
