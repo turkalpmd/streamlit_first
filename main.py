@@ -13,10 +13,11 @@ st.image(img)
 
 # Introduction
 
-st.subheader("Introduction")
+st.subheader("Büyüme Takibi")
+
 
 st.text("""
-Burada Z-score'ları hesaplıyacağız inş.
+Bu uygulamada Z score'lar 2 yaş ve altında WHO üstünde ise CDC referans aralıkları kullanılarak hesaplanır.
 	""")
 
 
